@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_root"
+    style="@style/Dialog_Root"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        style="@style/H3" />
+
+    <View style="@style/SeparatorListVertical" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout style="@style/VerticalList">
+
+            <com.rama.suri_zero.widgets.WdRadioGroup
+                android:id="@+id/action_group"
+                style="@style/VerticalList_BG2" />
+
+            <LinearLayout
+                android:id="@+id/amount_layout"
+                style="@style/VerticalList"
+                android:visibility="gone">
+
+                <View style="@style/SeparatorListVertical" />
+
+                <TextView
+                    android:id="@+id/amount_label"
+                    style="@style/Text" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <LinearLayout style="@style/VerticalList_BG2">
+                    <EditText
+                        android:id="@+id/amount"
+                        style="@style/EditText"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:text="2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/app_layout"
+                style="@style/VerticalList"
+                android:visibility="gone">
+
+                <View style="@style/SeparatorListVertical" />
+
+                <TextView
+                    style="@style/Text"
+                    android:text="@string/label_pick_app" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <LinearLayout style="@style/VerticalList_BG2">
+
+                    <View style="@style/SeparatorListVertical" />
+
+                    <com.rama.suri_zero.widgets.WdRadioGroup
+                        android:id="@+id/app_group"
+                        style="@style/VerticalList" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/action_hint"
+                style="@style/Text"
+                android:paddingTop="16dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <View style="@style/Separator" />
+
+    <Button
+        android:id="@+id/save_button"
+        style="@style/BTN"
+        android:text="@string/btn_save_changes" />
+</LinearLayout>

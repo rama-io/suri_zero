@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Suri Zero</string>
+    <string name="app_desc">Turn your camera notch into a gesture button</string>
+    <string name="app_version">%1$s v%2$d</string>
+    <string name="app_claims_ads_desc">No Ads</string>
+    <string name="app_claims_background_tasks_desc">Only reacts when you touch the notch</string>
+    <string name="app_claims_offline_desc">Works Completely Offline</string>
+    <string name="app_claims_trackers_desc">No Tracking</string>
+    <string name="app_claims_min_api">Supports Android 9 and Later</string>
+    <string name="app_claims_app_size">Only 70 kb</string>
+
+    <string name="license_gpl3" translatable="false">GPL 3.0</string>
+
+    <string name="accessibility_service_description">Turns your camera notch into a gesture button. It only reacts to touches on the notch and cannot read what is on your screen.</string>
+
+    <string name="header_system">System</string>
+    <string name="header_gestures">Gestures</string>
+    <string name="header_themes">Themes</string>
+    <string name="header_pick_action">Choose an action</string>
+
+    <string name="btn_go_back">GO BACK</string>
+    <string name="btn_about">ABOUT</string>
+    <string name="btn_add_to_accessibility">ADD APPLICATION TO THE ACCESSIBILITY LIST</string>
+    <string name="btn_allow_modify_system_settings">ALLOW APPLICATION TO MODIFY SYSTEM SETTINGS</string>
+    <string name="btn_save_changes">SAVE CHANGES</string>
+    <string name="btn_gesture" translatable="false">%1$s: %2$s</string>
+
+    <string name="label_app_zoom">App Zoom</string>
+    <string name="label_pick_app">Pick App</string>
+    <string name="label_amount_percent">Amount (percent)</string>
+    <string name="label_amount_steps">Amount (steps)</string>
+
+    <string name="label_zoom_unit" translatable="false">%</string>
+    <string name="label_collapse_indicator" translatable="false">[-]</string>
+    <string name="label_expand_indicator" translatable="false">[+]</string>
+
+    <string name="status_service_off">Accessibility: not enabled yet</string>
+    <string name="status_service_on">Accessibility: enabled</string>
+    <string name="status_service_no_cutout">Accessibility: enabled, but no camera notch was found on this screen</string>
+    <string name="status_write_settings_on">Modify system settings: allowed</string>
+    <string name="status_write_settings_off">Modify system settings: not allowed yet</string>
+
+    <string name="gesture_single_tap">Single Tap</string>
+    <string name="gesture_double_tap">Double Tap</string>
+    <string name="gesture_long_touch">Long Touch</string>
+    <string name="gesture_swipe_right">Swipe right</string>
+    <string name="gesture_swipe_left">Swipe left</string>
+
+    <string name="action_empty">Empty</string>
+    <string name="action_toggle_lantern">Toggle lantern</string>
+    <string name="action_lock_screen">Lock screen</string>
+    <string name="action_take_screenshot">Take screenshots</string>
+    <string name="action_open_app">Open app</string>
+    <string name="action_open_app_named">Open app (%1$s)</string>
+    <string name="action_play_pause_music">Play/pause music</string>
+    <string name="action_brightness_up" translatable="false">+%1$d brightness</string>
+    <string name="action_brightness_down" translatable="false">-%1$d brightness</string>
+    <string name="action_volume_up" translatable="false">+%1$d volume</string>
+    <string name="action_volume_down" translatable="false">-%1$d volume</string>
+
+    <string name="hint_volume_steps">Changes the media volume.</string>
+    <string name="hint_brightness">Needs the \"Modify system settings\" permission. Suri Zero asks for it when you save.</string>
+
+    <string name="toast_unable_to_launch_app">Unable to open app</string>
+    <string name="toast_unable_open_settings">Unable to open settings</string>
+    <string name="toast_action_failed">Could not run that action</string>
+    <string name="toast_no_flashlight">No flashlight found on this device</string>
+    <string name="toast_need_write_settings">Allow Suri Zero to modify system settings first</string>
+    <string name="toast_amount_invalid">Enter an amount between 1 and %1$d</string>
+    <string name="toast_pick_app">Pick an app first</string>
+</resources>

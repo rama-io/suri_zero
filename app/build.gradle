@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+def currentYear = 2026
+
+android {
+    namespace 'com.rama.suri_zero'
+    compileSdk 37
+
+    defaultConfig {
+        applicationId 'com.rama.suri_zero'
+        minSdk 28
+        targetSdk 37
+
+        versionCode 1
+        versionName "${currentYear}.${versionCode}"
+
+        resConfigs "en"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            vcsInfo.include = false
+
+            signingConfig signingConfigs.getByName('debug')
+        }
+
+        beta {
+            applicationIdSuffix '.beta'
+            versionNameSuffix '-beta'
+            minifyEnabled true
+            shrinkResources true
+
+            signingConfig signingConfigs.getByName('debug')
+        }
+
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-dev'
+            signingConfig signingConfigs.getByName('debug')
+        }
+    }
+
+    dependenciesInfo {
+        includeInApk false
+        includeInBundle false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    packaging {
+        resources {
+            excludes += 'META-INF/*.version'
+            excludes += 'META-INF/com/android/build/gradle/app-metadata.properties'
+            excludes += 'kotlin/**'
+        }
+
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
+}
+
+androidComponents {
+    onVariants(selector().all()) { variant ->
+        variant.outputs.each { output ->
+            output.outputFileName.set(output.versionName.map { name -> "suri_zero_${name}.apk"
+            })
+        }
+    }
+}

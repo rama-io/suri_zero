@@ -1,0 +1,2 @@
+rootProject.name = "Suri Zero"
+include ':app'

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    style="@style/VerticalList"
+    android:layout_height="match_parent"
+    android:background="@color/base"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp">
+
+    <TextView
+        style="@style/H2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name" />
+
+    <View style="@style/SeparatorListVertical" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:fadingEdge="none"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout style="@style/VerticalList">
+
+            <com.rama.suri_zero.widgets.WdCollapsibleSection
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:defaultExpanded="true"
+                app:header="@string/header_system"
+                app:key="settings:section:system">
+
+                <Button
+                    android:id="@+id/activate_button"
+                    style="@style/BTN"
+                    android:text="@string/btn_add_to_accessibility" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <TextView
+                    android:id="@+id/service_status"
+                    style="@style/Text"
+                    android:tag="warning" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <Button
+                    android:id="@+id/allow_modify_system_settings"
+                    style="@style/BTN"
+                    android:text="@string/btn_allow_modify_system_settings" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <TextView
+                    android:id="@+id/write_settings_status"
+                    style="@style/Text"
+                    android:tag="warning" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <LinearLayout style="@style/VerticalList_BG2">
+
+                    <TextView
+                        style="@style/Text"
+                        android:text="@string/label_app_zoom" />
+
+                    <View style="@style/SeparatorListVertical" />
+
+                    <LinearLayout style="@style/HorizontalList">
+
+                        <EditText
+                            android:id="@+id/zoom"
+                            style="@style/EditText"
+                            android:layout_weight="1"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:text="100" />
+
+                        <View style="@style/SeparatorListHorizontal" />
+
+                        <TextView
+                            style="@style/Text"
+                            android:layout_width="wrap_content"
+                            android:text="@string/label_zoom_unit" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.rama.suri_zero.widgets.WdCollapsibleSection>
+
+            <View style="@style/SeparatorListVertical" />
+
+            <!-- Button order must match Gesture.values(): see Settings.GESTURE_BUTTON_IDS -->
+            <com.rama.suri_zero.widgets.WdCollapsibleSection
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:defaultExpanded="true"
+                app:header="@string/header_gestures"
+                app:key="settings:section:gestures">
+
+                <Button
+                    android:id="@+id/gesture_single_tap"
+                    style="@style/BTN"
+                    android:textAllCaps="true" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <Button
+                    android:id="@+id/gesture_double_tap"
+                    style="@style/BTN"
+                    android:textAllCaps="true" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <Button
+                    android:id="@+id/gesture_long_touch"
+                    style="@style/BTN"
+                    android:textAllCaps="true" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <Button
+                    android:id="@+id/gesture_swipe_right"
+                    style="@style/BTN"
+                    android:textAllCaps="true" />
+
+                <View style="@style/SeparatorListVertical" />
+
+                <Button
+                    android:id="@+id/gesture_swipe_left"
+                    style="@style/BTN"
+                    android:textAllCaps="true" />
+            </com.rama.suri_zero.widgets.WdCollapsibleSection>
+
+            <View style="@style/SeparatorListVertical" />
+
+            <com.rama.suri_zero.widgets.WdCollapsibleSection
+                android:id="@+id/themes_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:defaultExpanded="true"
+                app:header="@string/header_themes"
+                app:key="settings:section:appearance">
+
+                <com.rama.suri_zero.widgets.WdRadioGroup
+                    android:id="@+id/theme_group"
+                    style="@style/VerticalList_BG2" />
+            </com.rama.suri_zero.widgets.WdCollapsibleSection>
+        </LinearLayout>
+    </ScrollView>
+
+    <View style="@style/Separator" />
+
+    <Button
+        android:id="@+id/go_about"
+        style="@style/BTN"
+        android:text="@string/btn_about" />
+</LinearLayout>
