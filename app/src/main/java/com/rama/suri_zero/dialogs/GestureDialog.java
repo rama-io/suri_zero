@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,7 +99,7 @@ public final class GestureDialog {
         selectedApp = prefs.getGestureApp(gesture);
         amountEdited = current.hasAmount();
         // Empty until an amount action is chosen, so each "+{amount} ..." row shows its own default meanwhile.
-        setAmountText(current.hasAmount() ? String.valueOf(prefs.getGestureAmount(gesture, current)) : "");
+        setAmountText(current.hasAmount() ? Action.formatAmount(prefs.getGestureAmount(gesture, current)) : "");
 
         buildActionList(current);
         appGroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -153,8 +154,11 @@ public final class GestureDialog {
         amountLayout.setVisibility(action.hasAmount() ? View.VISIBLE : View.GONE);
         if (action.hasAmount()) {
             amountLabel.setText(action.amountLabelRes);
+            amountField.setInputType(action.allowsDecimals()
+                    ? InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL
+                    : InputType.TYPE_CLASS_NUMBER);
             if (!amountEdited) {
-                setAmountText(String.valueOf(action.defaultAmount));
+                setAmountText(Action.formatAmount(action.defaultAmount));
             }
         }
 
@@ -169,9 +173,9 @@ public final class GestureDialog {
         }
     }
 
-    private int currentAmountOr(int fallback) {
+    private float currentAmountOr(float fallback) {
         try {
-            return Integer.parseInt(amountField.getText().toString().trim());
+            return Float.parseFloat(amountField.getText().toString().trim().replace(',', '.'));
         } catch (NumberFormatException e) {
             return fallback;
         }
@@ -227,11 +231,13 @@ public final class GestureDialog {
     private void save() {
         Action action = selectedAction();
 
-        int amount = 0;
+        float amount = 0f;
         if (action.hasAmount()) {
-            amount = currentAmountOr(0);
-            if (amount < 1 || amount > action.maxAmount) {
-                Toast.makeText(activity, activity.getString(R.string.toast_amount_invalid, action.maxAmount), Toast.LENGTH_SHORT).show();
+            amount = currentAmountOr(0f);
+            boolean wholeOnly = !action.allowsDecimals() && amount != Math.rint(amount);
+            if (amount < action.minAmount() || amount > action.maxAmount || wholeOnly) {
+                Toast.makeText(activity, activity.getString(R.string.toast_amount_invalid,
+                        Action.formatAmount(action.minAmount()), Action.formatAmount(action.maxAmount)), Toast.LENGTH_SHORT).show();
                 return;
             }
         }

@@ -54,10 +54,10 @@
     <string name="action_open_app">Open app</string>
     <string name="action_open_app_named">Open app (%1$s)</string>
     <string name="action_play_pause_music">Play/pause music</string>
-    <string name="action_brightness_up" translatable="false">+%1$d brightness</string>
-    <string name="action_brightness_down" translatable="false">-%1$d brightness</string>
-    <string name="action_volume_up" translatable="false">+%1$d volume</string>
-    <string name="action_volume_down" translatable="false">-%1$d volume</string>
+    <string name="action_brightness_up" translatable="false">+%1$s brightness</string>
+    <string name="action_brightness_down" translatable="false">-%1$s brightness</string>
+    <string name="action_volume_up" translatable="false">+%1$s volume</string>
+    <string name="action_volume_down" translatable="false">-%1$s volume</string>
 
     <string name="hint_volume_steps">Changes the media volume.</string>
     <string name="hint_brightness">Needs the \"Modify system settings\" permission. Suri Zero asks for it when you save.</string>
@@ -67,6 +67,6 @@
     <string name="toast_action_failed">Could not run that action</string>
     <string name="toast_no_flashlight">No flashlight found on this device</string>
     <string name="toast_need_write_settings">Allow Suri Zero to modify system settings first</string>
-    <string name="toast_amount_invalid">Enter an amount between 1 and %1$d</string>
+    <string name="toast_amount_invalid">Enter an amount between %1$s and %2$s</string>
     <string name="toast_pick_app">Pick an app first</string>
 </resources>

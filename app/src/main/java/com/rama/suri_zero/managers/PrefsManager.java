@@ -59,18 +59,20 @@ public class PrefsManager {
         return id == null ? gesture.defaultAction : Action.fromId(id);
     }
 
-    public int getGestureAmount(Gesture gesture, Action action) {
-        return prefs.getInt(gestureKey(gesture, "amount"), action.defaultAmount);
+    public float getGestureAmount(Gesture gesture, Action action) {
+        // Older versions stored this as an int, so read it untyped to avoid a ClassCastException.
+        Object stored = prefs.getAll().get(gestureKey(gesture, "amount"));
+        return stored instanceof Number ? ((Number) stored).floatValue() : action.defaultAmount;
     }
 
     public String getGestureApp(Gesture gesture) {
         return prefs.getString(gestureKey(gesture, "app"), null);
     }
 
-    public void setGesture(Gesture gesture, Action action, int amount, String appPackage) {
+    public void setGesture(Gesture gesture, Action action, float amount, String appPackage) {
         prefs.edit()
                 .putString(gestureKey(gesture, "action"), action.id)
-                .putInt(gestureKey(gesture, "amount"), amount)
+                .putFloat(gestureKey(gesture, "amount"), amount)
                 .putString(gestureKey(gesture, "app"), appPackage)
                 .commit();
     }

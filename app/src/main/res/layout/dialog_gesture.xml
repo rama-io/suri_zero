@@ -44,8 +44,8 @@
                         android:id="@+id/amount"
                         style="@style/EditText"
                         android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:maxLength="3"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
                         android:text="2" />
                 </LinearLayout>
             </LinearLayout>

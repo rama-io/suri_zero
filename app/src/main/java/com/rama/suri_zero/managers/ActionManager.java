@@ -32,7 +32,7 @@ public final class ActionManager {
         }
     }
 
-    private static void execute(AccessibilityService service, Action action, int amount, String appPackage) throws Exception {
+    private static void execute(AccessibilityService service, Action action, float amount, String appPackage) throws Exception {
         switch (action) {
             case TOGGLE_LANTERN:
                 if (!LanternManager.toggle(service)) {
@@ -104,14 +104,14 @@ public final class ActionManager {
         audio.dispatchMediaKeyEvent(new KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, 0));
     }
 
-    private static void changeVolume(Context context, int steps, int sign) {
+    private static void changeVolume(Context context, float steps, int sign) {
         AudioManager audio = audio(context);
         int max = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        int next = Math.max(0, Math.min(max, audio.getStreamVolume(AudioManager.STREAM_MUSIC) + sign * steps));
+        int next = Math.max(0, Math.min(max, audio.getStreamVolume(AudioManager.STREAM_MUSIC) + sign * Math.max(1, Math.round(steps))));
         audio.setStreamVolume(AudioManager.STREAM_MUSIC, next, AudioManager.FLAG_SHOW_UI);
     }
 
-    private static void changeBrightness(Context context, int percent, int sign) {
+    private static void changeBrightness(Context context, float percent, int sign) {
         if (!canWriteSettings(context)) {
             toast(context, R.string.toast_need_write_settings);
             requestWriteSettings(context);
@@ -124,7 +124,7 @@ public final class ActionManager {
         } catch (Settings.SettingNotFoundException e) {
             current = 128;
         }
-        int next = Math.max(1, Math.min(255, current + sign * Math.round(255f * percent / 100f)));
+        int next = Math.max(1, Math.min(255, current + sign * Math.max(1, Math.round(255f * percent / 100f))));
         Settings.System.putInt(resolver, Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
         Settings.System.putInt(resolver, Settings.System.SCREEN_BRIGHTNESS, next);
     }
