@@ -39,6 +39,9 @@ public final class ActionManager {
                     toast(service, R.string.toast_no_flashlight);
                 }
                 break;
+            case TOGGLE_SCREEN_LANTERN:
+                ScreenLanternManager.toggle(service);
+                break;
             case LOCK_SCREEN:
                 service.performGlobalAction(AccessibilityService.GLOBAL_ACTION_LOCK_SCREEN);
                 break;

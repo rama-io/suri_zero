@@ -49,6 +49,7 @@
 
     <string name="action_empty">Empty</string>
     <string name="action_toggle_lantern">Toggle lantern</string>
+    <string name="action_toggle_screen_lantern">Toggle screen lantern</string>
     <string name="action_lock_screen">Lock screen</string>
     <string name="action_take_screenshot">Take screenshots</string>
     <string name="action_open_app">Open app</string>

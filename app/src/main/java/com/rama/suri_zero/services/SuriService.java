@@ -9,6 +9,7 @@ import android.view.accessibility.AccessibilityEvent;
 
 import com.rama.suri_zero.managers.ActionManager;
 import com.rama.suri_zero.managers.LanternManager;
+import com.rama.suri_zero.managers.ScreenLanternManager;
 
 public class SuriService extends AccessibilityService {
     public static final int NOTCH_UNKNOWN = 0;
@@ -62,6 +63,7 @@ public class SuriService extends AccessibilityService {
             overlay = null;
         }
         LanternManager.unregister();
+        ScreenLanternManager.hide();
         notchState = NOTCH_UNKNOWN;
     }
 

@@ -8,6 +8,7 @@ public enum Action {
     NONE("none", R.string.action_empty),
     OPEN_APP("open_app", R.string.action_open_app, true),
     TOGGLE_LANTERN("toggle_lantern", R.string.action_toggle_lantern),
+    TOGGLE_SCREEN_LANTERN("toggle_screen_lantern", R.string.action_toggle_screen_lantern),
     LOCK_SCREEN("lock_screen", R.string.action_lock_screen),
     TAKE_SCREENSHOT("take_screenshot", R.string.action_take_screenshot),
     PLAY_PAUSE_MUSIC("play_pause_music", R.string.action_play_pause_music),
